@@ -12,21 +12,27 @@ class ViewController: UIViewController {
     var counter = 1
     var myTimer = Timer()
     var back = 0
+    var isAnimating = false
     
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var imageCounter: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myImageView.image = UIImage(named:"frame1.png")
         imageCounter.text = String(counter)
     }
     
     @IBAction func play(_ sender: Any) {
-        myTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(doAnimation), userInfo: nil, repeats: true)
-    }
-    
-    @IBAction func stop(_ sender: Any) {
-        myTimer.invalidate()
+//        myTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(doAnimation), userInfo: nil, repeats: true)
+        if isAnimating == false {
+            isAnimating = true
+            myTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(doAnimation), userInfo: nil, repeats: true)
+            
+        } else {
+            isAnimating = false
+            myTimer.invalidate()
+        }
     }
     
     @objc func doAnimation(){
