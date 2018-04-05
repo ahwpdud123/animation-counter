@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var counter = 1
+    var counter = 1 //Timer 객체 생성
     var myTimer = Timer()
     var back = 0
     var isAnimating = false
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 //        myTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(doAnimation), userInfo: nil, repeats: true)
         if isAnimating == false {
             isAnimating = true
-            myTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(doAnimation), userInfo: nil, repeats: true)
+            myTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(doAnimation), userInfo: nil, repeats: true)
             
         } else {
             isAnimating = false
