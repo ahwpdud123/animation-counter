@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     var counter = 1
     var myTimer = Timer()
+    var back = 0
     
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var imageCounter: UILabel!
@@ -29,10 +30,20 @@ class ViewController: UIViewController {
     }
     
     @objc func doAnimation(){
+//        if counter == 5 {
+//            counter = 1
+//        } else {
+//            counter = counter + 1
+//        }
         if counter == 5 {
-            counter = 1
-        } else {
-            counter = counter + 1
+            back = 0
+        } else if counter == 1{
+            back = 1
+        }
+        if back == 1 {
+            counter += 1
+        } else if back == 0{
+            counter = counter - 1
         }
         myImageView.image = UIImage(named:"frame\(counter).png")
         imageCounter.text = String(counter)
